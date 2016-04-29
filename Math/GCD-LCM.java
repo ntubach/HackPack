@@ -1,11 +1,11 @@
 import java.util.*;
 
-public class GCD-LCM
+public class GCD_LCM
 {
 	public static void main (String[] args)
 	{
 		int[] arry = {1,2,3,4,5,6,7,8,9,10};		
-		doLCM(arry);
+		System.out.println( doLCM(arry) );
 	}
 	public static int doGCD(int a, int b)
 	{
@@ -14,7 +14,7 @@ public class GCD-LCM
 	public static int doLCM(int[] arry)
 	{
 		int LCM = 1;
-		for (int i=0; i<arry.length(); i++)
+		for (int i=0; i<arry.length; i++)
 		{
 			LCM += (LCM*arry[i])/doGCD(LCM, arry[i]);
 		}
