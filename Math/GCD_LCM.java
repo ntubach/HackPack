@@ -16,7 +16,7 @@ public class GCD_LCM
 		int LCM = 1;
 		for (int i=0; i<arry.length; i++)
 		{
-			LCM += (LCM*arry[i])/doGCD(LCM, arry[i]);
+			LCM = (LCM*arry[i])/doGCD(LCM, arry[i]);
 		}
 		return LCM;
 	}
