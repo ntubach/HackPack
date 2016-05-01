@@ -1,11 +1,13 @@
-public class permutations 
+public class permutations_combinations 
 {
 	static int count = 0;
 	public static void main (String[] args)
 	{
 		String str = "12345";
 		doPermutations("", str);
+		doCombinations("", str);
 	}
+	//Function to create permutations
 	public static void doPermutations(String pre, String str)
 	{
 		if (str.length() == 0)
@@ -21,5 +23,18 @@ public class permutations
 				doPermutations(pre + str.charAt(i), str.substring(0, i) + str.substring(i+1, str.length()));
 			}
 		}
+	}
+	//Function to create combinations
+    public static void doCombinations(String pre, String str)
+	{
+        if (str.length() > 0) 
+		{
+			//Prints out the combinations
+            System.out.println(pre + str.charAt(0));
+			
+			//Create the combinations
+            doCombinations(pre + str.charAt(0), str.substring(1));
+            doCombinations(pre, str.substring(1));
+        }    
 	}
 }
