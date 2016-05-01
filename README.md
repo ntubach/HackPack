@@ -4,4 +4,4 @@ All code contained is implemented in Java (JDK 8).
 
 ##Acknowledgements     
 [Mitchell Findley](https://github.com/Mitchell-Findley)    
-[Robert Millward]()     
+[Robert Millward](https://github.com/rmillward)     
