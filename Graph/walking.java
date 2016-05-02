@@ -7,6 +7,28 @@ public class walking {
     static int n;
     static ArrayList<Edge>[] g;
 
+    /*
+     * Sample input for this code is: 
+1
+4
+30
+45
+20
+55
+4
+(1, 3)
+(2, 4)
+(4, 1)
+(3, 2)
+4
+1
+2
+3
+4
+		(No tabs for formatting because would break reading)
+		Output should be: 95 for distance walked
+     */
+    
     public static void main(String[] args) {
 	    Scanner sc = new Scanner(System.in);
 
