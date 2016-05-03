@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 //Rectangle inside circle + resize to fit alongside small circle
 public class mice 
 {
