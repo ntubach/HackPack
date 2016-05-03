@@ -2,6 +2,30 @@ import java.util.*;
 
 public class convex {
 
+	/*
+	 * Code used to solve convex hull in contest
+	 * Input of:
+1
+1 25
+2 1 7 1 1 2 9 2 1 3
+10 3 1 4 10 4 1 5 10 5
+2 6 10 6 2 7 9 7 3 8
+8 8 4 9 7 9 6 2 3 3
+5 4 7 5 8 6 4 6 3 7
+
+	 * will output:
+1 10
+4 9
+7 9
+10 6
+10 3
+9 2
+7 1
+2 1
+1 2
+1 5
+2 7
+	 */
     public static void main(String[] args) throws Exception {
 
         Scanner in = new Scanner(System.in);
