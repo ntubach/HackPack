@@ -103,7 +103,7 @@ public class BellmanFord
     {
     	graph.setDisToMax();
         graph.vertices.get(startIndex).dis = 0;
-        for (int i = 0; i < graph.vertices.size(); i++)
+        for (int i = 0; i < graph.vertices.size() - 1; i++)
         {
             Vertex v = graph.vertices.get(i);
             for (Edge e : v.edges)
@@ -115,6 +115,7 @@ public class BellmanFord
                 }
             }            
         }
+
         for(Vertex v : graph.vertices)
         {
         	System.out.println(v.val+": "+v.dis);
