@@ -119,7 +119,7 @@ public class Kruskal
             if (contains(e.origin, e.dest)) continue;
 
             e.origin.edges.add(e);
-            System.out.println((i++)+": "+e.origin.val+" "+e.dest.val);
+            System.out.println((i++) + ": " + e.val);
         }
     }
 
