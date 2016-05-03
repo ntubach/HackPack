@@ -24,46 +24,46 @@ public class Kruskal
 		Vertex v7 = new Vertex(7);
 		Vertex v8 = new Vertex(8);
 		Vertex v9 = new Vertex(9);
-		Edge[] e = new Edge[10];
+		Edge[] e = new Edge[20];
 		
 		e[0] = (new Edge(v0,v4,1));
-		e[0] = (new Edge(v0,v7,8));
-		e[0] = (new Edge(v0,v8,6));
+		e[1] = (new Edge(v0,v7,8));
+		e[2] = (new Edge(v0,v8,6));
 		g.vertices.add(v0);
 		
-		e[1] = (new Edge(v1,v5,44));
-		e[1] = (new Edge(v1,v7,2));
+		e[3] = (new Edge(v1,v5,44));
+		e[4] = (new Edge(v1,v7,2));
 		g.vertices.add(v1);
 		
-		e[2] = (new Edge(v2,v3,4));
+		e[5] = (new Edge(v2,v3,4));
 		g.vertices.add(v2);
 		
-		e[3] = (new Edge(v3,v2,7));
-		e[3] = (new Edge(v3,v8,9));
+		e[6] = (new Edge(v3,v2,7));
+		e[7] = (new Edge(v3,v8,9));
 		g.vertices.add(v3);
 		
-		e[4] = (new Edge(v4,v0,10));
-		e[4] = (new Edge(v4,v9,5));
+		e[8] = (new Edge(v4,v0,10));
+		e[9] = (new Edge(v4,v9,5));
 		g.vertices.add(v4);
 		
-		e[5] = (new Edge(v5,v1,6));
-		e[5] = (new Edge(v5,v6,1));
-		e[5] = (new Edge(v5,v9,20));
+		e[10] = (new Edge(v5,v1,6));
+		e[11] = (new Edge(v5,v6,1));
+		e[12] = (new Edge(v5,v9,20));
 		g.vertices.add(v5);
 		
-		e[6] = (new Edge(v6,v5,30));
+		e[13] = (new Edge(v6,v5,30));
 		g.vertices.add(v6);
 		
-		e[7] = (new Edge(v7,v0,2));
-		e[7] = (new Edge(v7,v1,5));
+		e[14] = (new Edge(v7,v0,2));
+		e[15] = (new Edge(v7,v1,5));
 		g.vertices.add(v7);
 		
-		e[8] = (new Edge(v8,v0,3));
-		e[8] = (new Edge(v8,v3,2));
+		e[16] = (new Edge(v8,v0,3));
+		e[17] = (new Edge(v8,v3,2));
 		g.vertices.add(v8);
 		
-		e[9] = (new Edge(v9,v4,21));
-		e[9] = (new Edge(v9,v5,1));
+		e[18] = (new Edge(v9,v4,21));
+		e[19] = (new Edge(v9,v5,1));
 		g.vertices.add(v9);
 		
 		Kruskal k = new Kruskal(e);
