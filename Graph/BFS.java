@@ -63,8 +63,6 @@ public class BFS
 		v9.edges.add(new Edge(v5));
 		g.vertices.add(v9);
 		BFS bfs = new BFS(g, 0);
-		
-		
     }
 
     public static class Graph
