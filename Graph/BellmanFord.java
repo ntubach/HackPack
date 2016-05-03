@@ -10,58 +10,50 @@ public class BellmanFord
 
     public static void main(String[] args)
     {
-    	Graph g = new Graph();
-		Vertex v0 = new Vertex(0);
-		Vertex v1 = new Vertex(1);
-		Vertex v2 = new Vertex(2);
-		Vertex v3 = new Vertex(3);
-		Vertex v4 = new Vertex(4);
-		Vertex v5 = new Vertex(5);
-		Vertex v6 = new Vertex(6);
-		Vertex v7 = new Vertex(7);
-		Vertex v8 = new Vertex(8);
-		Vertex v9 = new Vertex(9);
-		
-		v0.edges.add(new Edge(v4,1));
-		v0.edges.add(new Edge(v7,8));
-		v0.edges.add(new Edge(v8,6));
-		g.vertices.add(v0);
-		
-		v1.edges.add(new Edge(v5,44));
-		v1.edges.add(new Edge(v7,2));
-		g.vertices.add(v1);
-		
-		v2.edges.add(new Edge(v3,4));
-		g.vertices.add(v2);
-		
-		v3.edges.add(new Edge(v2,7));
-		v3.edges.add(new Edge(v8,9));
-		g.vertices.add(v3);
-		
-		v4.edges.add(new Edge(v0,10));
-		v4.edges.add(new Edge(v9,5));
-		g.vertices.add(v4);
-		
-		v5.edges.add(new Edge(v1,6));
-		v5.edges.add(new Edge(v6,1));
-		v5.edges.add(new Edge(v9,20));
-		g.vertices.add(v5);
-		
-		v6.edges.add(new Edge(v5,30));
-		g.vertices.add(v6);
-		
-		v7.edges.add(new Edge(v0,2));
-		v7.edges.add(new Edge(v1,5));
-		g.vertices.add(v7);
-		
-		v8.edges.add(new Edge(v0,3));
-		v8.edges.add(new Edge(v3,2));
-		g.vertices.add(v8);
-		
-		v9.edges.add(new Edge(v4,21));
-		v9.edges.add(new Edge(v5,1));
-		g.vertices.add(v9);
-		BellmanFord bf = new BellmanFord(g, 0);
+        Vertex[] vertices = new Vertex[10];
+        vertices[0] = new Vertex(0);
+        vertices[1] = new Vertex(1);
+        vertices[2] = new Vertex(2);
+        vertices[3] = new Vertex(3);
+        vertices[4] = new Vertex(4);
+        vertices[5] = new Vertex(5);
+        vertices[6] = new Vertex(6);
+        vertices[7] = new Vertex(7);
+        vertices[8] = new Vertex(8);
+        vertices[9] = new Vertex(9);
+        Edge[] e = new Edge[20];
+
+        e[0] = (new Edge(vertices[0],vertices[4],1));
+        e[1] = (new Edge(vertices[0],vertices[7],8));
+        e[2] = (new Edge(vertices[0],vertices[8],6));
+
+        e[3] = (new Edge(vertices[1],vertices[5],44));
+        e[4] = (new Edge(vertices[1],vertices[7],2));
+
+        e[5] = (new Edge(vertices[2],vertices[3],4));
+
+        e[6] = (new Edge(vertices[3],vertices[2],7));
+        e[7] = (new Edge(vertices[3],vertices[8],9));
+
+        e[8] = (new Edge(vertices[4],vertices[0],10));
+        e[9] = (new Edge(vertices[4],vertices[9],5));
+
+        e[10] = (new Edge(vertices[5],vertices[1],6));
+        e[11] = (new Edge(vertices[5],vertices[6],1));
+        e[12] = (new Edge(vertices[5],vertices[9],20));
+
+        e[13] = (new Edge(vertices[6],vertices[5],30));
+
+        e[14] = (new Edge(vertices[7],vertices[0],2));
+        e[15] = (new Edge(vertices[7],vertices[1],5));
+
+        e[16] = (new Edge(vertices[8],vertices[0],3));
+        e[17] = (new Edge(vertices[8],vertices[3],2));
+
+        e[18] = (new Edge(vertices[9],vertices[4],21));
+        e[19] = (new Edge(vertices[9],vertices[5],1));
+
+        BellmanFord bf = new BellmanFord(vertices, 0, e);
     }
 
     public static class Graph
@@ -70,7 +62,7 @@ public class BellmanFord
 
         public void setDisToMax()
         {
-            for (Vertex v: vertices)
+            for (Vertex v : vertices)
             {
                 v.dis = MAX;
             }
@@ -80,45 +72,55 @@ public class BellmanFord
     public static class Vertex
     {
         ArrayList<Edge> edges = new ArrayList<>();
-        Integer dis = MAX;
         int val;
-        public Vertex(int val)
+        int dis = MAX;
+        Vertex(int val)
         {
-        	this.val = val;
+            this.val = val;
         }
     }
 
-    public static class Edge
+    public static class Edge implements Comparable<Edge>
     {
-        public Edge(Vertex dest, int val)
+        public Edge(Vertex origin, Vertex dest, int val)
         {
+            this.origin = origin;
             this.dest = dest;
             this.val = val;
         }
+        Vertex origin;
         Vertex dest;
         Integer val;
+
+        @Override
+        public int compareTo(Edge edge)
+        {
+            return val - edge.val;
+        }
     }
 
-    BellmanFord(Graph graph, int startIndex)
+    BellmanFord(Vertex[] vertices, int startIndex, Edge[] edges)
     {
-    	graph.setDisToMax();
-        graph.vertices.get(startIndex).dis = 0;
-        for (int i = 0; i < graph.vertices.size() - 1; i++)
+        for (Vertex v : vertices)
         {
-            Vertex v = graph.vertices.get(i);
-            for (Edge e : v.edges)
-            {
-                int dis = v.dis + e.val;
-                if (dis < e.dest.dis)
-                {
-                    e.dest.dis = dis;                    
-                }
-            }            
+            v.dis = MAX;
         }
 
-        for(Vertex v : graph.vertices)
+        vertices[startIndex].dis = 0;
+
+        for (int i = 0; i < vertices.length - 1; i++)
         {
-        	System.out.println(v.val+": "+v.dis);
+            for (int j =0; j < edges.length; j++)
+            {
+                int dis = edges[j].origin.dis + edges[j].val;
+
+                edges[j].dest.dis = dis < edges[j].dest.dis ? dis : edges[j].dest.dis;
+            }
+        }
+
+        for(Vertex v : vertices)
+        {
+            System.out.println(v.val +": " + v.dis);
         }
     }
 }
